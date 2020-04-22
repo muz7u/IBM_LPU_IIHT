@@ -24,13 +24,13 @@ public class EmployeeController
 		this.employeeService = refEmployeeService;
 	}
 	
-	@GetMapping("/employee")
+	@GetMapping("/employees")
 	public List<Employee> getAllEmployees()
 	{
 		return employeeService.getAllEmployees();
 	}
 	
-	@PostMapping("/employee")
+	@PostMapping("/employees")
 	public Employee createEmployee(Employee employee)
 	{
 		return employeeService.createEmployee(employee);

@@ -34,6 +34,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 	@Transactional
 	public List<Employee> getAllEmployees() {
 		session=entityManager.unwrap(Session.class);
+		
 		Query query=session.createQuery("from Employee", Employee.class);
 		return query.getResultList();
 	}
@@ -43,7 +44,9 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 	@Transactional
 	public Employee createEmployee(Employee employee) {
 		session=entityManager.unwrap(Session.class);
+	//	session.getTransaction().begin();
 		session.save(employee);
+	//	session.getTransaction().commit();
 		return employee;
 	}
 
