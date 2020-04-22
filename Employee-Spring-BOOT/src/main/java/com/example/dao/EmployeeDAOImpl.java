@@ -27,17 +27,13 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 	}
 
 	private Session session;
-	@PostConstruct
-	public void init()
-	{
-		session=entityManager.unwrap(Session.class);
-	}
+		
 	
 	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional
 	public List<Employee> getAllEmployees() {
-		
+		session=entityManager.unwrap(Session.class);
 		Query query=session.createQuery("from Employee", Employee.class);
 		return query.getResultList();
 	}
@@ -46,6 +42,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 	@Override
 	@Transactional
 	public Employee createEmployee(Employee employee) {
+		session=entityManager.unwrap(Session.class);
 		session.save(employee);
 		return employee;
 	}
