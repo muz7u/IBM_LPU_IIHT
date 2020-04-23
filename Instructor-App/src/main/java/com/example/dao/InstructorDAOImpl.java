@@ -43,7 +43,6 @@ public class InstructorDAOImpl implements InstructorDAO {
 
 
 	@Override
-
 	public Instructor createInstructor(Instructor instructor) {
 		session=entityManager.unwrap(Session.class);
 			session.getTransaction().begin();
@@ -57,7 +56,7 @@ public class InstructorDAOImpl implements InstructorDAO {
 	public Instructor updateInstructor(Instructor instructor) {
 		session=entityManager.unwrap(Session.class);
 			session.getTransaction().begin();
-			session.saveOrUpdate(instructor);
+			session.update(instructor);
 			session.getTransaction().commit();
 			return instructor;
 	}

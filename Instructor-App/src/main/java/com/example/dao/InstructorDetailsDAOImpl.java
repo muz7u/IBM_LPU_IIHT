@@ -61,9 +61,31 @@ public class InstructorDetailsDAOImpl implements InstructorDetailsDAO {
 
 	@Override
 	public void deleteInstructorDetailsById(int id) {
-		// TODO Auto-generated method stub
+		
+		session=entityManager.unwrap(Session.class);
+		InstructorDetails instructorDetails=findInstructorDetailsById(id);
+		session.getTransaction().begin();
+		session.remove(instructorDetails);
+		session.getTransaction().commit();	
 		
 	}
 	
+	@Override
+	public InstructorDetails updateInstructorDetails(InstructorDetails instructorDetails) {
+		session=entityManager.unwrap(Session.class);
+		Instructor objInstructor=instructorDetails.getInstructor();
+		objInstructor.setInstructorDetails(instructorDetails);
+//		Instructor objInstructor=findInstructorDetailsById(id);
+	//	objInstructor.setFirstName(objInstructor.getFirstName());
+//		objInstructor.setLastName(objInstructor.getLastName());
+//		objInstructor.setEmail(objInstructor.getEmail());
+	//	entityManager.merge(objInstructor);
+//		return objInstructor;
+		session.getTransaction().begin();
+		session.saveOrUpdate(objInstructor);
+		session.getTransaction().commit();
+		
+		return instructorDetails;
+	}
 
 }

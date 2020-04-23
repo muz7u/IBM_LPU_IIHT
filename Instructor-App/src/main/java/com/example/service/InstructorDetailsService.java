@@ -11,5 +11,7 @@ public interface InstructorDetailsService {
 
 	public List<InstructorDetails> getAllInstructorDetails();
 	public InstructorDetails findInstructorDetailsById(int id);
+	public void deleteInstructorDetailsById(int id);
+	public InstructorDetails updateInstructorDetails(InstructorDetails instructorDetails);
 
 }

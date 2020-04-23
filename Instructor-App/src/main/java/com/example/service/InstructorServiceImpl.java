@@ -48,5 +48,11 @@ public class InstructorServiceImpl implements InstructorService {
 		instructorDAO.deleteInstructorById(id);
 	}
 
+	@Override
+	public Instructor updateInstructor(Instructor instructor) {
+		// TODO Auto-generated method stub
+		return instructorDAO.updateInstructor(instructor);
+	}
+
 
 }

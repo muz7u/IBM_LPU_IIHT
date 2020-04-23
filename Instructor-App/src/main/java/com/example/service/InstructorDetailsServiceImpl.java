@@ -37,4 +37,16 @@ public class InstructorDetailsServiceImpl implements InstructorDetailsService {
 		return instructorDetailsDAO.findInstructorDetailsById(id);
 	}
 
+	@Override
+	public void deleteInstructorDetailsById(int id) {
+		
+		instructorDetailsDAO.deleteInstructorDetailsById(id);
+	}
+
+	@Override
+	public InstructorDetails updateInstructorDetails(InstructorDetails instructorDetails) {
+		// TODO Auto-generated method stub
+		return instructorDetailsDAO.updateInstructorDetails(instructorDetails);
+	}
+
 }

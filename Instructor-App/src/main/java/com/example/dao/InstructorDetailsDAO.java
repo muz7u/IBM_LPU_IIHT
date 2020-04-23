@@ -2,7 +2,6 @@ package com.example.dao;
 
 import java.util.List;
 
-import com.example.entity.Instructor;
 import com.example.entity.InstructorDetails;
 
 public interface InstructorDetailsDAO {
@@ -11,4 +10,5 @@ public interface InstructorDetailsDAO {
 	public InstructorDetails createInstructorDetails(InstructorDetails instructorDetails);
 	public InstructorDetails findInstructorDetailsById(int id);
 	public void deleteInstructorDetailsById(int id);
+	public InstructorDetails updateInstructorDetails(InstructorDetails instructorDetails);
 }

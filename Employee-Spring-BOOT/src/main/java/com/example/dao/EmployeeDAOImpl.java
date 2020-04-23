@@ -5,6 +5,7 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 
 import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,16 +27,16 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 		this.entityManager = entityManager;
 	}
 
-	private Session session;
+
 		
 	
 	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional
 	public List<Employee> getAllEmployees() {
-		session=entityManager.unwrap(Session.class);
 		
-		Query query=session.createQuery("from Employee", Employee.class);
+		
+		TypedQuery<Employee> query=entityManager.createQuery("from Employee", Employee.class);
 		return query.getResultList();
 	}
 
@@ -43,11 +44,39 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 	@Override
 	@Transactional
 	public Employee createEmployee(Employee employee) {
-		session=entityManager.unwrap(Session.class);
+		
 	//	session.getTransaction().begin();
-		session.save(employee);
+		entityManager.persist(employee);
 	//	session.getTransaction().commit();
 		return employee;
+	}
+
+
+	@Override
+	public Employee findEmployeeById(int id) {
+		// TODO Auto-generated method stub
+		return entityManager.find(Employee.class, id);
+		
+	}
+
+
+	@Override
+	public void deleteEmployeeById(int id) {
+		// TODO Auto-generated method stub
+		Employee objEmployee=findEmployeeById(id);
+		entityManager.remove(objEmployee);
+		
+	}
+
+
+	@Transactional
+	@Override
+	public Employee updateEmployee(Employee employee, int id) {
+		// TODO Auto-generated method stub
+		
+		
+		
+		return entityManager.merge(employee);
 	}
 
 }
