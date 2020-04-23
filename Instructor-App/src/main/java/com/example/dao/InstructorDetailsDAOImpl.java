@@ -58,6 +58,12 @@ public class InstructorDetailsDAOImpl implements InstructorDetailsDAO {
 		session.getTransaction().commit();
 		return objInstructorDetails;
 	}
+
+	@Override
+	public void deleteInstructorDetailsById(int id) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 
 }

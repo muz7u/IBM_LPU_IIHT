@@ -10,4 +10,5 @@ public interface InstructorDetailsDAO {
 	public List<InstructorDetails> getAllInstructorDetails();
 	public InstructorDetails createInstructorDetails(InstructorDetails instructorDetails);
 	public InstructorDetails findInstructorDetailsById(int id);
+	public void deleteInstructorDetailsById(int id);
 }

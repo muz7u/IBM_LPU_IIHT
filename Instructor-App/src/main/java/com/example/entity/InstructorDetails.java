@@ -9,6 +9,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 @Table(name="instructor_details")
 public class InstructorDetails
@@ -24,7 +26,7 @@ public class InstructorDetails
 	@Column(name="hobby")
 	private String hobby;
 
-	
+	@JsonBackReference
 	@OneToOne(mappedBy="instructorDetails", cascade=CascadeType.ALL)
 	private Instructor instructor;
 

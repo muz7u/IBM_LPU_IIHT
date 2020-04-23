@@ -10,6 +10,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 @Table(name="instructor")
 public class Instructor 
@@ -27,6 +29,7 @@ public class Instructor
 	
 	private String email;
 
+	@JsonManagedReference
 	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="instuctor_details_id")
 	private InstructorDetails instructorDetails;

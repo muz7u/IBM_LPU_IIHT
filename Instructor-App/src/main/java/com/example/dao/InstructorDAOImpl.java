@@ -51,6 +51,16 @@ public class InstructorDAOImpl implements InstructorDAO {
 			session.getTransaction().commit();
 			return instructor;
 	}
+	
+	@Override
+
+	public Instructor updateInstructor(Instructor instructor) {
+		session=entityManager.unwrap(Session.class);
+			session.getTransaction().begin();
+			session.saveOrUpdate(instructor);
+			session.getTransaction().commit();
+			return instructor;
+	}
 
 
 	@Override

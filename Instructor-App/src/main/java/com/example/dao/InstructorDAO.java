@@ -11,6 +11,6 @@ public interface InstructorDAO
 	public Instructor createInstructor(Instructor instructor);
 	public Instructor findInstructorById(int id);
 	public void deleteInstructorById(int id);
-	
+	public Instructor updateInstructor(Instructor instructor);
 	
 }
