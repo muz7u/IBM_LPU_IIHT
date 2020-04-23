@@ -33,6 +33,12 @@ public class Instructor
 
 	
 	
+	public Instructor() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+
 	public Instructor(String firstName, String lastName, String email) {
 		super();
 		this.firstName = firstName;
