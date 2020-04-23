@@ -7,10 +7,12 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.entity.Instructor;
+import com.example.entity.InstructorDetails;
 import com.example.service.InstructorServiceImpl;
 
 @RestController
@@ -33,13 +35,13 @@ public class InstructorController
 	}
 	
 	@PostMapping("/instructors")
-	public Instructor createInstructor(Instructor instructor)
+	public Instructor createInstructor(@RequestBody Instructor instructor)
 	{
 		return instructorService.createInstructor(instructor);
 	}
 	
-	@DeleteMapping("/instructors")
-	public void deleteInstructorById(int id)
+	@DeleteMapping("/instructors/{id}")
+	public void deleteInstructorById(@PathVariable("id")int id)
 	{
 		instructorService.deleteInstructorById(id);
 	}
@@ -53,4 +55,7 @@ public class InstructorController
 		else
 			return objInstructor;
 	}
+	
+
+	
 }

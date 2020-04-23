@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.example.entity.Instructor;
+import com.example.entity.InstructorDetails;
 
 @EnableTransactionManagement
 @Repository(value="instructorDAO")
@@ -82,4 +83,7 @@ public class InstructorDAOImpl implements InstructorDAO {
         
     }
    */
+
+
+
 }

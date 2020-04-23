@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.dao.InstructorDAO;
 import com.example.entity.Instructor;
+import com.example.entity.InstructorDetails;
 
 
 @Service
@@ -46,5 +47,6 @@ public class InstructorServiceImpl implements InstructorService {
 		// TODO Auto-generated method stub
 		instructorDAO.deleteInstructorById(id);
 	}
+
 
 }
