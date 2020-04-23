@@ -39,13 +39,6 @@ public class Instructor
 	}
 
 
-	public Instructor(String firstName, String lastName, String email) {
-		super();
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.email = email;
-	}
-
 
 	public int getId() {
 		return id;

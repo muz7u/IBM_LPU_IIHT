@@ -15,7 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.example.entity.Instructor;
 
 @EnableTransactionManagement
-@Repository(value="employeeDAO")
+@Repository(value="instructorDAO")
 public class InstructorDAOImpl implements InstructorDAO {
 
 	private EntityManager entityManager;
@@ -42,12 +42,12 @@ public class InstructorDAOImpl implements InstructorDAO {
 
 
 	@Override
-	@Transactional
+
 	public Instructor createInstructor(Instructor instructor) {
 		session=entityManager.unwrap(Session.class);
-		//	session.getTransaction().begin();
+			session.getTransaction().begin();
 			session.save(instructor);
-		//	session.getTransaction().commit();
+			session.getTransaction().commit();
 			return instructor;
 	}
 
@@ -70,5 +70,16 @@ public class InstructorDAOImpl implements InstructorDAO {
 		session.getTransaction().commit();
 		
 	}
-
+/*
+ * {
+        "firstName": "Ghulamsdfgh",
+        "lastName": "Mozafdghfdhgmmmil",
+        "email": "mozammil010@gmdsaghfdailvdvfd.com",
+        "instructorDetails": {
+        	"course":"sciafdhgmasdghfsence",
+        	"hobby":"dsghsdafghj-fi"
+        }
+        
+    }
+   */
 }
