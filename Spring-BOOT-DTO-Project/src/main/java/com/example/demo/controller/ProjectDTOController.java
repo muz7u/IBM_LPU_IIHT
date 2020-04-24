@@ -52,19 +52,19 @@ public class ProjectDTOController
 	}
 	
 	@GetMapping("/projects/name/{name}")
-	public ResponseEntity<Iterable<Project>> findByAgentName(@PathVariable("name")String name)
-	{
-		return ResponseEntity.ok().body(projectDTOService.findByAgentName(name));
-	}
-	
-	@GetMapping("/projects/agent-name/{name}")
-	public ResponseEntity<Iterable<Project>> findByName(@PathVariable("name")String name)
+	public ResponseEntity<ProjectDTO> findByName(@PathVariable("name")String name)
 	{
 		return ResponseEntity.ok().body(projectDTOService.findByName(name));
 	}
 	
+	@GetMapping("/projects/agent-name/{agentName}")
+	public ResponseEntity<ProjectDTO> findByAgentName(@PathVariable("agentName")String agentName)
+	{
+		return ResponseEntity.ok().body(projectDTOService.findByAgentName(agentName));
+	}
+	
 	@GetMapping("/projects/name-n-agent-name/{name}/{agentName}")
-	public ResponseEntity<Iterable<Project>> findByAgentNameAndName(@PathVariable("agentName")String agentName, @PathVariable("name")String Name)
+	public ResponseEntity<ProjectDTO> findByAgentNameAndName(@PathVariable("agentName")String agentName, @PathVariable("name")String Name)
 	{
 		return ResponseEntity.ok().body(projectDTOService.findByAgentNameAndName(agentName, Name));
 	}

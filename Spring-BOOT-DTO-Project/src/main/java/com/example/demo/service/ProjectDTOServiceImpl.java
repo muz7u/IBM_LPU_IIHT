@@ -57,7 +57,7 @@ public class ProjectDTOServiceImpl implements ProjectDTOService
  public ProjectDTO createProject(ProjectDTO projectDTO)
  	{
  		
- 		Project project = new Project(UUID.randomUUID().toString(),projectDTO.getAgentName(), projectDTO.getName());
+ 		Project project = new Project(projectDTO.getName(),UUID.randomUUID().toString(),projectDTO.getAgentName());
  		projectDAO.save(project);
  		return projectDTO;
  	}
@@ -74,10 +74,13 @@ public ProjectDTO updateProject(ProjectDTO projectDTO) {
 }
 
 @Override
+@Transactional
 public ProjectDTO deleteProjectById(Integer id) {
 	if (projectDAO.findById(id).isPresent()) {
 		Project project = projectDAO.findById(id).get();
+		
 		ProjectDTO projectDTO = new ProjectDTO(project.getAgentName(),project.getName());
+		
 		projectDAO.deleteById(id);
 		return projectDTO;
 	} else
@@ -85,28 +88,54 @@ public ProjectDTO deleteProjectById(Integer id) {
 }
 
 @Override
-public Iterable<Project> findByName(String name) {
+public ProjectDTO findByName(String name) {
 	
-		return projectDAO.findByName(name);
+		Iterable<Project> itrProject= projectDAO.findByName(name);
+		ProjectDTO objProjectDTO=new ProjectDTO();
+		for(Project p:itrProject)
+		{
+		objProjectDTO.setAgentName(p.getAgentName());
+		objProjectDTO.setName(p.getName());
+		}
+		return objProjectDTO;
 
 }
 
 @Override
-public Iterable<Project> findByAgentName(String name) {
+public ProjectDTO findByAgentName(String agentName) {
 	// TODO Auto-generated method stub
-	return projectDAO.findByAgentName(name);
+	Iterable<Project> itrProject= projectDAO.findByAgentName(agentName);
+	ProjectDTO objProjectDTO=new ProjectDTO();
+	for(Project p:itrProject)
+	{
+	objProjectDTO.setAgentName(p.getAgentName());
+	objProjectDTO.setName(p.getName());
+	}
+	return objProjectDTO;
 }
 
 @Override
-public Iterable<Project> findByAgentNameAndName(String agentName, String Name) {
+public ProjectDTO findByAgentNameAndName(String agentName, String Name) {
 	// TODO Auto-generated method stub
-	return projectDAO.findByAgentNameAndName(agentName, Name);
+	Iterable<Project> itrProject= projectDAO.findByAgentNameAndName(agentName, Name);;
+	ProjectDTO objProjectDTO=new ProjectDTO();
+	for(Project p:itrProject)
+	{
+	objProjectDTO.setAgentName(p.getAgentName());
+	objProjectDTO.setName(p.getName());
+	}
+	return objProjectDTO;
 }
 
 @Override
 @Transactional
 public void removeByName(String name) {
-	projectDAO.removeByName(name);
+	
+	Iterable<Project> itrProject= projectDAO.findByName(name);
+	for(Project p:itrProject)
+	{
+	projectDAO.removeByName(p.getName());
+	}
 	
 }
 
