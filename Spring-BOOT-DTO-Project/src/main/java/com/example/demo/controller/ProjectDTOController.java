@@ -35,13 +35,13 @@ public class ProjectDTOController
 	@PostMapping("/projects")
 	public ResponseEntity<ProjectDTO> createProject(@RequestBody ProjectDTO projectDTO)
 	{
-		return projectDTOService.createProject(projectDTO);
+		return ResponseEntity.ok().body(projectDTOService.createProject(projectDTO));
 	}
 	
 	@PutMapping("/projects")
 	public ResponseEntity<ProjectDTO> updateProject(@RequestBody ProjectDTO projectDTO)
 	{
-		return projectDTOService.updateProject(projectDTO);
+		return ResponseEntity.ok().body(projectDTOService.updateProject(projectDTO));
 	}
 	
 	@GetMapping("/projects/name/{name}")

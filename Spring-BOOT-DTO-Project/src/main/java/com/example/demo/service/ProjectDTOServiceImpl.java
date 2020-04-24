@@ -41,12 +41,12 @@ public class ProjectDTOServiceImpl implements ProjectDTOService
  }
 
  @Override
- public List getAllProjects() 
+ public List<ProjectDTO> getAllProjects() 
  {
 	 List<ProjectDTO> projectDTOList = new ArrayList<>();
 	 projectDAO.findAll().forEach(project -> 
 	 {
-		 projectDTOList.add(new ProjectDTO( project.getName(),project.getAgentName()));
+		 projectDTOList.add(new ProjectDTO(project.getName(),project.getAgentName()));
 	 }
 	 );
 
@@ -54,32 +54,32 @@ public class ProjectDTOServiceImpl implements ProjectDTOService
  }
 
  @Override
- public ResponseEntity<ProjectDTO> createProject(ProjectDTO projectDTO)
+ public ProjectDTO createProject(ProjectDTO projectDTO)
  	{
  		
  		Project project = new Project(UUID.randomUUID().toString(),projectDTO.getAgentName(), projectDTO.getName());
  		projectDAO.save(project);
- 		return ResponseEntity.ok().body(projectDTO);
+ 		return projectDTO;
  	}
 
 @Override
-public ResponseEntity<ProjectDTO> updateProject(ProjectDTO projectDTO) {
+public ProjectDTO updateProject(ProjectDTO projectDTO) {
 	Project objProject=new Project();
 	
 	objProject.setAgentName(projectDTO.getAgentName());
 	objProject.setName(projectDTO.getName());
 	objProject.setDescription(UUID.randomUUID().toString());
 	projectDAO.save(objProject);
-	return ResponseEntity.ok().body(projectDTO);
+	return projectDTO;
 }
 
 @Override
-public ResponseEntity<ProjectDTO> deleteProjectById(Integer id) {
+public ProjectDTO deleteProjectById(Integer id) {
 	if (projectDAO.findById(id).isPresent()) {
 		Project project = projectDAO.findById(id).get();
 		ProjectDTO projectDTO = new ProjectDTO(project.getAgentName(),project.getName());
 		projectDAO.deleteById(id);
-		return ResponseEntity.ok().body(projectDTO);
+		return projectDTO;
 	} else
 		return null;
 }
