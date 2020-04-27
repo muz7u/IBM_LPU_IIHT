@@ -1,5 +1,7 @@
 package com.example.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,14 +24,14 @@ public class AccountController
 
 
 
-	@GetMapping("accounts/{id}")
+	@GetMapping("/accounts/{id}")
 	public Account findById(@PathVariable("id")Integer id)
 	{
 		return accountDAO.findById(id);
 	}
 	
 	
-	@GetMapping("accounts/number/{number}")
+	@GetMapping("/accounts/number/{number}")
 	public Account findByNumber(@PathVariable("number")String number)
 	{
 		return accountDAO.findByNumber(number);
@@ -37,10 +39,16 @@ public class AccountController
 	
 	
 	
-	@GetMapping("accounts/cust/{customerId}")
+	@GetMapping("/accounts/cust/{customerId}")
 	public Account findByCustomerId(@PathVariable("customerId")Integer customerId)
 	{
 		return accountDAO.findByCustomerId(customerId);
+	}
+	
+	@GetMapping("/accounts")
+	public List<Account> fetchAll()
+	{
+		return accountDAO.fetchAll();
 	}
 	
 }

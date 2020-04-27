@@ -1,6 +1,8 @@
 package com.example.demo.dao;
 
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 
 
@@ -70,6 +72,20 @@ public class AccountDAOImpl implements AccountDAO {
 		// TODO Auto-generated method stub
 		em.persist(account);
 		return account;
+	}
+
+
+
+
+
+
+	@Override
+	public List<Account> fetchAll() {
+		em=sessionFactory.createEntityManager();
+		Session session=em.unwrap(Session.class);
+		
+		Query<Account> query=session.createQuery("from Account",Account.class);
+		return query.getResultList();
 	}
 
 }
