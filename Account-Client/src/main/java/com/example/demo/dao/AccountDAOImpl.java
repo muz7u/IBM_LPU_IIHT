@@ -75,17 +75,10 @@ public class AccountDAOImpl implements AccountDAO {
 	}
 
 
-
-
-
-
 	@Override
 	public List<Account> fetchAll() {
-		em=sessionFactory.createEntityManager();
-		Session session=em.unwrap(Session.class);
 		
-		Query<Account> query=session.createQuery("from Account",Account.class);
-		return query.getResultList();
+		return em.createQuery("from Account", Account.class).getResultList();
 	}
 
 }
