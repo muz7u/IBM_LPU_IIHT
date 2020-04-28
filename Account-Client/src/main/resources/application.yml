@@ -1,0 +1,11 @@
+ribbon:
+  eureka:
+    enabled: true
+server:
+  port: 8081
+spring:
+  application:
+    name: Account-Service
+  h2:
+    console:
+      enabled: true
