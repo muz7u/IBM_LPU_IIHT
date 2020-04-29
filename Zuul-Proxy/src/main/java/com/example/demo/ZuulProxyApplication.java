@@ -12,4 +12,10 @@ public class ZuulProxyApplication {
 		SpringApplication.run(ZuulProxyApplication.class, args);
 	}
 
+	/*
+	 * 
+	 * http.authorizeRequests().antMatchers("/**").permitAll().anyRequest().authenticated().and().csrf().disable();
+	 * 
+	 */
+	
 }

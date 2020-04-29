@@ -11,11 +11,11 @@ zuul:
   prefix: /api
   routes:
     account: 
-      path: /accounts/**
-      serviceId: Account-Service
+      path: /movies/**
+      serviceId: Movie-Service
     customer: 
-      path: /customers/**
-      serviceId: Customer-Service 
+      path: /users/**
+      serviceId: USER-SERVICE 
     
 ribbon:
   eureka:
@@ -29,3 +29,7 @@ eureka:
        
 server:
   port: 8999
+
+      
+  
+

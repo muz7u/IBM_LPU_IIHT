@@ -3,10 +3,9 @@ eureka:
     fetch-registry: false
     register-with-eureka: false
     
-    server:
+  server:
     enableSelfPreservation: false
     
 server:
   port: 8761
-  
   
