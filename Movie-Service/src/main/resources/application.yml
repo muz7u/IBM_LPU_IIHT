@@ -1,0 +1,22 @@
+ribbon:
+  eureka:
+    enabled: true
+server:
+  port: 8082
+  
+spring:
+  application:
+    name: Movie-service
+  cloud:
+    config:
+      uri: http://localhost:8888
+  h2:
+    console:
+      enabled: true
+      path: /h2
+      
+  boot:
+    admin:
+      client:
+        url:
+        - http://localhost:1111
