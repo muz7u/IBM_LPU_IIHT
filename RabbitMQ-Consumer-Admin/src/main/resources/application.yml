@@ -6,7 +6,7 @@ spring:
       client:
         url: http://localhost:9999
   application:
-    name: rabbit-consumer
+    name: rabbit-producer
   rabbitmq:
     host: localhost
     username: guest
@@ -16,7 +16,7 @@ spring:
     consul:
       discovery:
         register: true
-        service-name: rabbit-consumer
+        service-name: rabbit-producer
       host: localhost
       port: 8500
-
+        h2:    console:      enabled: true

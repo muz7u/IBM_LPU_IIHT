@@ -7,8 +7,8 @@ import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.demo.dao.ItemDAO;
-import com.example.demo.model.Item;
+import com.example.demo.dao.AccountDAO;
+import com.example.demo.model.Account;
 
 
 @Service
@@ -16,25 +16,25 @@ public class RabbitMQConsumerService {
 	private static final String QUEUE = "items-queue";
 
 	
-	public List<Item> list=new ArrayList<>();
-	private ItemDAO itemDAO;
+	public List<Account> list=new ArrayList<>();
+	private AccountDAO accountDAO;
 	@Autowired
-	public RabbitMQConsumerService(ItemDAO itemDAO) {
+	public RabbitMQConsumerService(AccountDAO accountDAO) {
 		super();
-		this.itemDAO = itemDAO;
+		this.accountDAO = accountDAO;
 	}
 
 
 	@RabbitListener(queues = QUEUE)
-	public void receiveMessage(Item item) {
+	public void receiveMessage(Account account) {
 
-		System.out.println("Received " + item);
-			list.add(item);
+		System.out.println("Received " + account);
+			list.add(account);
 			if(!list.isEmpty())
 			{
-			for(Item i:list)
+			for(Account i:list)
 			{
-				itemDAO.save(i);
+				accountDAO.save(i);
 			}
 			}
 	}
