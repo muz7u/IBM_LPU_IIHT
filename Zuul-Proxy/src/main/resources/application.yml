@@ -11,11 +11,8 @@ zuul:
   prefix: /api
   routes:
     account: 
-      path: /movies/**
-      serviceId: Movie-Service
-    customer: 
-      path: /users/**
-      serviceId: USER-SERVICE 
+      path: /product/**
+      serviceId: product-service 
     
 ribbon:
   eureka:

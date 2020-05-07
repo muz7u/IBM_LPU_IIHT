@@ -1,0 +1,27 @@
+server:
+  port: 8081
+spring:
+  data:
+    rest:
+      base-path: /api
+  datasource:
+    url: jdbc:mysql://localhost:3306/product
+    username: root
+    password: pass@word1
+  application:
+    name: product-service
+
+eureka:
+  client:
+    register-with-eureka: true
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+    
+ribbon:
+  eureka:
+    enabled: true
+
+
+
+      
+  
