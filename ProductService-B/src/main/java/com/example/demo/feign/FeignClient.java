@@ -12,5 +12,5 @@ import com.example.demo.fallback.ProductFallback;
 public interface FeignClient {
 	
 	@RequestMapping("/api/products")
-	public ResponseEntity<List<Object>> callfindAll();
+	public List<Object> callfindAll();
 }

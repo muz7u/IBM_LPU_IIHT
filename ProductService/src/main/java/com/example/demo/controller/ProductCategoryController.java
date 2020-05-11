@@ -14,8 +14,8 @@ import com.example.demo.dao.ProductCategoryRepository;
 import com.example.demo.entity.ProductCategory;
 
 @RestController
-@RequestMapping("/api1")
-@CrossOrigin("http://localhost:4200")
+@RequestMapping("/api")
+@CrossOrigin("*")
 public class ProductCategoryController {
 
 	

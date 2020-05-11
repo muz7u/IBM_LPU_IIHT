@@ -27,7 +27,7 @@ public class FeignController {
 	}
 	
 	@RequestMapping("/products")
-	public ResponseEntity<ResponseEntity<List<Object>>> callGetAll()
+	public ResponseEntity<List<Object>> callGetAll()
 	{
 		return ResponseEntity.status(HttpStatus.OK).body(refClient.callfindAll());
 	}

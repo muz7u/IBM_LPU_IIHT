@@ -15,9 +15,10 @@ public class ProductFallback implements FeignClient{
 
 
 	@Override
-	public ResponseEntity<List<Object>> callfindAll() {
+	public List<Object> callfindAll() {
 		// TODO Auto-generated method stub
-		return new ResponseEntity("Service DOWN",HttpStatus.SERVICE_UNAVAILABLE);
+		//return new ResponseEntity("Service DOWN",HttpStatus.SERVICE_UNAVAILABLE);
+		return null;
 	}
 
 
