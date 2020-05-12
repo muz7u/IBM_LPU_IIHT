@@ -8,6 +8,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,39 +16,41 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.demo.dao.ProductRepository;
 import com.example.demo.entity.Product;
 import com.example.demo.entity.ProductCategory;
+import com.example.demo.service.ProductCategoryService;
+import com.example.demo.service.ProductService;
 
 @RestController
-@RequestMapping("/api")
 @CrossOrigin("*")
-
 public class ProductController {
 
-	private ProductRepository productRepository;
 	@Autowired
-	public ProductController(ProductRepository productRepository) {
-		super();
-		this.productRepository = productRepository;
+	private ProductService service;
+	@Autowired
+	private ProductCategoryService catService;
+	@GetMapping("/api/products")
+	public List<Product> getProducts()
+	{
+		return service.getAllProducts();
 	}
-	
-	@GetMapping("/products")
-	public List<Product> finAll()
+	@GetMapping("/api/productsBycategory")
+	public List<Product> findByCategoryId(@RequestParam long id)
 	{
-		List<Product> list= (List<Product>)productRepository.findAll();
-		
-		return list;
-		
-	} 
-	
-	@GetMapping("/products/{id}")
-	public Product findById(@RequestParam Long id)
-	{
-		return productRepository.findById(id).get();
+		return service.getAllProductsByCategoryId(id);
 	}
-	
-	@GetMapping("/products/search/findByCategoryId")
-	public Page<Product> findByCategoryId(@RequestParam("id")long id, Pageable pageable)
+	@GetMapping("/api/products/{id}")
+	public Product getProduct(@PathVariable("id") long id)
 	{
-		return productRepository.findByCategoryId(id, pageable);
+		return service.getProduct(id);
+	}
+	@GetMapping("/api/product-category")
+	public List<ProductCategory> getAllCategory()
+	{
+		return catService.getAllCategory();
+	}
+	@GetMapping("/api/products/findByName")
+	public List<Product> getAllProductByName(@RequestParam String name)
+	{
+		return service.getProductByName(name);
 	}
 	
 }

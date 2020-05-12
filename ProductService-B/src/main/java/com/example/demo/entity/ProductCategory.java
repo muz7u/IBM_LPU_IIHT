@@ -1,45 +1,45 @@
 package com.example.demo.entity;
 
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
-
-import javax.persistence.*;
-
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-
 import java.util.Set;
 
-@Data
+
 public class ProductCategory {
 
+  
     private Long id;
 
-
+    
     private String categoryName;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "category")
     private Set<Product> products;
 
+	public Long getId() {
+		return id;
+	}
 
-	public ProductCategory(String categoryName, Set<Product> products) {
-		super();
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getCategoryName() {
+		return categoryName;
+	}
+
+	public void setCategoryName(String categoryName) {
 		this.categoryName = categoryName;
+	}
+
+	public Set<Product> getProducts() {
+		return products;
+	}
+
+	public void setProducts(Set<Product> products) {
 		this.products = products;
 	}
 
-	public ProductCategory() {
-		super();
-		// TODO Auto-generated constructor stub
+	@Override
+	public String toString() {
+		return "ProductCategory [id=" + id + ", categoryName=" + categoryName + "]";
 	}
-    
-    
 
 }
-
-
-
-
-
-
-

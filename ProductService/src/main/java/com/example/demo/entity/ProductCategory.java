@@ -6,15 +6,13 @@ import lombok.Setter;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import java.util.Set;
 
 @Entity
 @Table(name="product_category")
-//@Data //-- known bug
-@Getter
-@Setter
 public class ProductCategory {
 
     @Id
@@ -25,7 +23,7 @@ public class ProductCategory {
     @Column(name = "category_name")
     private String categoryName;
 
-    @JsonManagedReference
+    @JsonBackReference
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "category")
     private Set<Product> products;
 
@@ -45,6 +43,30 @@ public class ProductCategory {
 	public ProductCategory() {
 		super();
 		// TODO Auto-generated constructor stub
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getCategoryName() {
+		return categoryName;
+	}
+
+	public void setCategoryName(String categoryName) {
+		this.categoryName = categoryName;
+	}
+
+	public Set<Product> getProducts() {
+		return products;
+	}
+
+	public void setProducts(Set<Product> products) {
+		this.products = products;
 	}
     
     

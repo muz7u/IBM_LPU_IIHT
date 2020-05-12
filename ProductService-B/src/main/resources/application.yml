@@ -2,17 +2,14 @@ server:
   port: 8082
 spring:
   application:
-    name: product-service-B
+    name: product-service-feign
 
 eureka:
   client:
     register-with-eureka: true
     serviceUrl:
       defaultZone: http://localhost:8761/eureka/
-    
-ribbon:
-  eureka:
-    enabled: true
+
 feign:
   hystrix:
     enabled: true
