@@ -71,11 +71,13 @@ public class ToDoController {
 		todoDAO.delete(objToDo);
 	}
 	
+	/*
 	@GetMapping("/tod/findByName")
 	public List<ToDo> findToDoByName(@RequestParam String name)
 	{
 		return todoDAO.findByTodoFirstNameContaining(name);
 	}
+	*/
 	
 	
 }

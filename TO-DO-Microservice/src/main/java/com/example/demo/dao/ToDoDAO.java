@@ -11,8 +11,8 @@ import com.example.demo.entity.ToDo;
 @Repository
 public interface ToDoDAO extends JpaRepository<ToDo, Integer> {
 
-	@Query
-	public List<ToDo> findByTodoFirstNameContaining(String todoFirstName);
+	//@Query
+	//public List<ToDo> findByTodoFirstNameContaining(String todoFirstName);
 	
 	
 }
